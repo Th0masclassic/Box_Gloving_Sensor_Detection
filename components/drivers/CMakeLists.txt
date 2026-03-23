@@ -1,0 +1,12 @@
+idf_component_register(
+    SRCS
+        "src/nvs_driver.c"
+        "src/accelerometer_driver.c"
+        "src/transmit_driver.c"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        bt
+        nvs_flash
+        driver
+)
