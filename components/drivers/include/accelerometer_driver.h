@@ -4,6 +4,7 @@
 #include "esp_err.h"
 #include "driver/gpio.h"
 #include "driver/i2c_master.h"
+#include <stdbool.h>
 
 #define ACCEL_I2C_ADDR          0x53
 #define READ_BYTES_ARRAY_SZ     100

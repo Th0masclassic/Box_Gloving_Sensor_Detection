@@ -2,6 +2,7 @@
 #define I2C_DRIVER_INIT_H
 
 #include "esp_err.h"
+#include "driver/i2c_master.h"
 
 // Trocar o que esta a -1
 #define I2C_MASTER_SCL_IO          -1                           /*!< GPIO number used for I2C master clock */

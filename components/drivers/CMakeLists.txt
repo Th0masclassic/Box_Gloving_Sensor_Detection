@@ -3,6 +3,8 @@ idf_component_register(
         "src/nvs_driver.c"
         "src/accelerometer_driver.c"
         "src/transmit_driver.c"
+        "src/accelerometer_driver.c"
+        "src/i2c_driver_init.c"
     INCLUDE_DIRS
         "include"
     REQUIRES

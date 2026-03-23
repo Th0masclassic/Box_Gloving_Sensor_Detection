@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "Firmware",
-    "project_version":    "4d57d56-dirty",
+    "project_version":    "848a5c3-dirty",
     "project_path":       "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.4",
     "build_dir":          "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/build",
@@ -175,7 +175,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/build/esp-idf/drivers/libdrivers.a",
-            "sources": [ "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/nvs_driver.c", "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/accelerometer_driver.c", "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/transmit_driver.c" ],
+            "sources": [ "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/nvs_driver.c", "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/accelerometer_driver.c", "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/transmit_driver.c", "C:/Users/User/Documents/ProjectGlovesBoxing/ProjectGlovesBoxing/Firmware/components/drivers/src/i2c_driver_init.c" ],
             "include_dirs": [ "include" ]
         },
         "efuse": {
