@@ -26,6 +26,7 @@ static void on_sync();
 static void on_reset(int reason);
 static void start_advertising();
 
+
 static void ble_task(void *param)
 {
     nimble_port_run();              // Runs the NimBLE host loop
@@ -39,6 +40,8 @@ static int gap_event_cb(struct ble_gap_event *event, void *arg)
     case BLE_GAP_EVENT_CONNECT:
         if (event->connect.status == 0) {
             ESP_LOGI(TAG, "Client connected");
+            ble_connected = true;
+            ble_disconnect = false;
         } else {
             ESP_LOGW(TAG, "Connection failed restarting advertising");
             start_advertising();
@@ -46,12 +49,14 @@ static int gap_event_cb(struct ble_gap_event *event, void *arg)
         return 0;
 
     case BLE_GAP_EVENT_DISCONNECT:
-        ESP_LOGI(TAG, "Client disconnected; restarting advertising");
+        ble_connected = false;
+        ble_disconnect = true;
+        ESP_LOGI(TAG, "Client disconnected restarting advertising");
         start_advertising();
         return 0;
 
     case BLE_GAP_EVENT_ADV_COMPLETE:
-        ESP_LOGI(TAG, "Advertising complete; restarting advertising");
+        ESP_LOGI(TAG, "Advertising complete restarting advertising");
         start_advertising();
         return 0;
 
