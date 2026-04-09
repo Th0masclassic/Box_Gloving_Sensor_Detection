@@ -9,7 +9,7 @@ static void i2c_master_init(i2c_master_dev_handle_t *dev_handle);
 
 static const char *TAG = "I2C";
 // Variable to know if its ready
-bool init = false;
+static bool init = false;
 
 i2c_master_bus_handle_t bus_handle = NULL;
 
