@@ -26,6 +26,8 @@ static void on_sync();
 static void on_reset(int reason);
 static void start_advertising();
 
+volatile bool ble_disconnect = false;
+volatile bool ble_connected = false;
 
 static void ble_task(void *param)
 {

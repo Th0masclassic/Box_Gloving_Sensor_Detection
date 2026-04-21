@@ -3,39 +3,54 @@
 
 #include "esp_err.h"
 #include "driver/gpio.h"
+#include "i2c_driver_init.h"
+#include "esp_log.h"
 #include "driver/i2c_master.h"
-#include <stdbool.h>
 
-#include "freertos/FreeRTOS.h" //biblioteca para o interrupt
-#include "freertos/semphr.h" 
+#define ACCEL_I2C_ADDR          0x53 // Endereco I2C do ADXL345.
+#define READ_BYTES_ARRAY_SZ     100  // Tamanho maximo de leitura.
+#define ADXL345_SAMPLE_LEN      6    // Numero de bytes por amostra.
+#define ADXL345_REG_DATAX0      0x32 // Primeiro registo dos dados.
+#define ADXL345_REG_POWER_CTL   0x2D // Registo de controlo de energia.
+#define ADXL345_REG_DATA_FORMAT 0x31 // Registo do formato dos dados.
+#define ADXL345_REG_BW_RATE     0x2C // Registo da taxa de amostragem.
+#define ADXL345_REG_INT_ENABLE  0x2E // Registo de interrupcoes.
 
-#define ACCEL_I2C_ADDR          0x53
-#define READ_BYTES_ARRAY_SZ     100
-#define ADXL345_SAMPLE_LEN      6
-#define ADXL345_REG_DATAX0     0x32
-#define ADXL345_REG_POWER_CTL   0x2D
-#define ADXL345_REG_DATA_FORMAT 0x31
-#define ADXL345_REG_BW_RATE     0x2C
-#define ADXL345_REG_INT_ENABLE   0x2E
-
-#define ACCEL_INT_PIN 6 //Pino do interrupt do acelerometro 
+#define ACCEL_INT_PIN 6 // Pino de interrupcao do acelerometro.
 
 typedef struct {
     float x;
     float y;
     float z;
 } accel_data_t;
+
 /**
- * @brief read the last thing written in the output area of ADXL345
- * @return the read data in the buff
+ * @brief Le bytes consecutivos do acelerometro.
+ *
+ * @param data Buffer de destino.
+ * @param len Numero de bytes a ler.
  */
-
- extern SemaphoreHandle_t accel_sem;
-
 void accel_read_bytes(uint8_t *data, size_t len);
+
+/**
+ * @brief Inicializa o acelerometro.
+ *
+ * @return ESP_OK se a inicializacao for bem sucedida.
+ */
 esp_err_t accel_init();
-bool has_init();
+
+/**
+ * @brief Le a origem da ultima interrupcao.
+ *
+ * @return Valor do registo INT_SOURCE.
+ */
 uint8_t accel_get_int_source(void);
+
+/**
+ * @brief Le os dados do acelerometro em g.
+ *
+ * @param accel_data Estrutura onde os dados sao guardados.
+ */
 void accel_get_real_data(accel_data_t *accel_data);
 
-#endif 
+#endif

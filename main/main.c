@@ -5,60 +5,74 @@
 #include "nvs_driver.h"
 #include "i2c_driver_init.h"
 #include "accelerometer_driver.h"
+#include "giroscopio_driver.h"
 #include "transmit_driver.h"
 #include "fsr_driver.h"
+#include "driver/i2c_master.h"
+#include "magnometer_driver.h"
 
 static const char *TAG = "MAIN";
+static const int LIMITE_GOLPE = 1;
 
 void sensor_task(void *pvParameter) {
-    accel_data_t dados;
-    uint8_t int_source = 0;
-    
+    (void)pvParameter;
+
+    accel_data_t acc_dados = {0};
+    giro_data_t gyr_dados = {0};
+    mag_data_t mag_dados = {0};
+
     while (1) {
-        // Chamamos a função do driver em vez de usar a variável diretamente
-        uint8_t src = accel_get_int_source();
-        ESP_LOGI("ACCEL", "INT_SOURCE = 0x%02X", src);
-        vTaskDelay(pdMS_TO_TICKS(200));
-        // Espera apenas 1 segundo pelo interrupt físico
-        if (xSemaphoreTake(accel_sem, pdMS_TO_TICKS(1000)) == pdTRUE) {
-            int_source = accel_get_int_source();
-            
-            int força = read_fsr();
-            printf("Força: %d\n", força);
-        
-            // Verifica se o bit DATA_READY (Bit 7 / 0x80) está ativo [cite: 2095]
-            if ((int_source & 0x80) == 0x80) {
-                ESP_LOGW("DEBUG", "SENSOR TEM DADOS! (0x%02X) - Problema no fio/pino fisico", int_source);
-            } else {
-                ESP_LOGE("DEBUG", "SENSOR NAO GEROU INTERRUPCAO! (0x%02X) - Problema de config", int_source);
-            }
-            accel_get_real_data(&dados);
-            printf("Aceleração! X:%.2f Y:%.2f Z:%.2f\n", dados.x, dados.y, dados.z);
-        } else {
-            printf("À espera do sinal elétrico no pino...\n");
+        int forca = read_fsr(FSR_PIN0);
+
+        // Le os sensores I2C.
+        accel_get_real_data(&acc_dados);
+        if (giro_get_real_data(&gyr_dados) != ESP_OK) {
+            ESP_LOGE(TAG, "Falha ao ler o giroscopio");
         }
+        if (mag_get_real_data(&mag_dados) != ESP_OK) {
+            ESP_LOGE(TAG, "Falha ao ler o magnetometro");
+        }
+
+        if (forca > LIMITE_GOLPE) {
+            printf("GOLPE DETETADO! FSR: %4d\n", forca);
+
+            // Evita contar o mesmo golpe duas vezes.
+            vTaskDelay(pdMS_TO_TICKS(100));
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
 void app_main(void)
 {
+    // Inicializa os servicos base.
     ESP_ERROR_CHECK(init_nvs());
     ESP_ERROR_CHECK(init_transmit_driver());
+    
+    // Inicializa os drivers.
     ESP_ERROR_CHECK(i2c_init());
-
-    // Inicializa o Acelerometro
+    
     if (accel_init() != ESP_OK) {
-        ESP_LOGE(TAG, "Falha ao inicializar acelerómetro");
-        return; 
+        ESP_LOGE(TAG, "Erro critico: Acelerometro nao encontrado!");
     }
 
-    // Inicializa o FSR no Pino 
+    if (giro_init() != ESP_OK) {
+        ESP_LOGE(TAG, "Erro critico: Giroscopio nao encontrado!");
+    }
+
+    if (mag_init() != ESP_OK) {
+        ESP_LOGE(TAG, "Erro critico: Magnetometro nao encontrado!");
+    }
+
     if (fsr_init() != ESP_OK) {
         ESP_LOGE(TAG, "Falha ao inicializar FSR");
-        return;
     }
 
-    ESP_LOGI(TAG, "Hardware pronto. A lançar task...");
+    vTaskDelay(pdMS_TO_TICKS(100));
+
+    ESP_LOGI(TAG, "Sistema de 6 eixos pronto. A iniciar leituras...");
     
+    // Tarefa de leitura dos sensores.
     xTaskCreate(sensor_task, "sensor_task", 4096, NULL, 5, NULL);
 }

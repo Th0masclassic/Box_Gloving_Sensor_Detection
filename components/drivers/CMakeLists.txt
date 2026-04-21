@@ -4,7 +4,9 @@ idf_component_register(
         "src/accelerometer_driver.c"
         "src/transmit_driver.c"
         "src/i2c_driver_init.c"
-	"src/fsr_driver.c"
+	    "src/fsr_driver.c"
+        "src/giroscopio_driver.c"
+        "src/magnometer_driver.c"
     INCLUDE_DIRS
         "include"
     REQUIRES

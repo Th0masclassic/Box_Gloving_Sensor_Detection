@@ -8,8 +8,7 @@
 #define BLE_APPEARANCE_GENERIC_TAG 0x0200
 
 // Used to alert other task of a disconnect event
-volatile bool ble_disconnect = false;
-volatile bool ble_connected = false;
+
 
 /**
  * @brief Init Transmit Driver To Allow Send Data trough ESP_NOW
