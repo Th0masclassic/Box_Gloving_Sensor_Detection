@@ -25,7 +25,9 @@ void sensor_task(void *pvParameter) {
         int forca = read_fsr(FSR_PIN0);
 
         // Le os sensores I2C.
-        accel_get_real_data(&acc_dados);
+        if (accel_get_real_data(&acc_dados) != ESP_OK) {
+            ESP_LOGE(TAG, "Falha ao ler o acelerometro");
+        }
         if (giro_get_real_data(&gyr_dados) != ESP_OK) {
             ESP_LOGE(TAG, "Falha ao ler o giroscopio");
         }
@@ -33,14 +35,20 @@ void sensor_task(void *pvParameter) {
             ESP_LOGE(TAG, "Falha ao ler o magnetometro");
         }
 
+        printf("FSR:%4d | ACC [X:%6.2f Y:%6.2f Z:%6.2f] | GIRO [X:%7.2f Y:%7.2f Z:%7.2f] | MAG [X:%6.2f Y:%6.2f Z:%6.2f]\n",
+               forca,
+               acc_dados.x, acc_dados.y, acc_dados.z,
+               gyr_dados.x, gyr_dados.y, gyr_dados.z,
+               mag_dados.x, mag_dados.y, mag_dados.z);
+
         if (forca > LIMITE_GOLPE) {
             printf("GOLPE DETETADO! FSR: %4d\n", forca);
 
             // Evita contar o mesmo golpe duas vezes.
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS_TO_TICKS(1000));
         }
 
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 

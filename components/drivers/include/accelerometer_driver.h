@@ -50,7 +50,8 @@ uint8_t accel_get_int_source(void);
  * @brief Le os dados do acelerometro em g.
  *
  * @param accel_data Estrutura onde os dados sao guardados.
+ * @return ESP_OK se a leitura for bem sucedida.
  */
-void accel_get_real_data(accel_data_t *accel_data);
+esp_err_t accel_get_real_data(accel_data_t *accel_data);
 
 #endif

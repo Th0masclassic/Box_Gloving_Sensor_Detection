@@ -4,8 +4,7 @@ static const char *TAG = "GIRO";
 static i2c_master_dev_handle_t giro_dev_handle = NULL;
 extern i2c_master_bus_handle_t bus_handle;
 
-esp_err_t giro_init(void)
-{
+esp_err_t giro_init(void){
     i2c_device_config_t dev_cfg = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
         .device_address = ITG3200_ADDR_PRIMARY,
@@ -17,33 +16,33 @@ esp_err_t giro_init(void)
         return ret;
     }
 
-    // Faz reset ao giroscopio.
+    // Faz reset ao giroscopio (0x80).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_PWR_MGM, 0x80);
     if (ret != ESP_OK) {
         return ret;
     }
     vTaskDelay(pdMS_TO_TICKS(100));
 
-    // Sai do modo de reset.
+    // Sai do modo de reset (0x00).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_PWR_MGM, 0x00);
     if (ret != ESP_OK) {
         return ret;
     }
     vTaskDelay(pdMS_TO_TICKS(20));
 
-    // Define escala e filtro.
+    // Define escala de +/-2000 graus/s e filtro a 42 Hz (0x1B).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_DLPF_FS, 0x1B);
     if (ret != ESP_OK) {
         return ret;
     }
 
-    // Define a taxa de amostragem.
+    // Define a taxa de amostragem para 100 Hz (divisor = 9).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_SMPLRT_DIV, 9);
     if (ret != ESP_OK) {
         return ret;
     }
 
-    // Ativa o sinal de dados prontos.
+    // Ativa a interrupcao de dados prontos (0x01).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_INT_CFG, 0x01);
     if (ret != ESP_OK) {
         return ret;

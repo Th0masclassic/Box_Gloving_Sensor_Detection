@@ -46,12 +46,21 @@ esp_err_t accel_init(){
     return ret;
 }
 
-void accel_get_real_data(accel_data_t *accel_data) {
+esp_err_t accel_get_real_data(accel_data_t *accel_data) {
+    if (accel_data == NULL || accel_dev_handle == NULL) {
+        return ESP_FAIL;
+    }
+
     uint8_t raw_data[ADXL345_SAMPLE_LEN];
-    accel_read_bytes(raw_data, ADXL345_SAMPLE_LEN);
+    esp_err_t ret = i2c_register_read(accel_dev_handle, ADXL345_REG_DATAX0, raw_data, ADXL345_SAMPLE_LEN);
+    if (ret != ESP_OK) {
+        return ret;
+    }
 
     // Converte os valores para g.
     accel_data->x = (float)(int16_t)((raw_data[1] << 8) | raw_data[0]) * 0.0039;
     accel_data->y = (float)(int16_t)((raw_data[3] << 8) | raw_data[2]) * 0.0039;
     accel_data->z = (float)(int16_t)((raw_data[5] << 8) | raw_data[4]) * 0.0039;
+
+    return ESP_OK;
 }
