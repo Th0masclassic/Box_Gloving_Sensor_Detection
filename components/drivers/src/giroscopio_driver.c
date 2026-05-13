@@ -8,14 +8,14 @@ esp_err_t giro_init(void){
     i2c_device_config_t dev_cfg = {
         .dev_addr_length = I2C_ADDR_BIT_LEN_7,
         .device_address = ITG3200_ADDR_PRIMARY,
-        .scl_speed_hz = 100000,
+        .scl_speed_hz = I2C_MASTER_FREQ_HZ,
     };
 
     esp_err_t ret = i2c_master_bus_add_device(bus_handle, &dev_cfg, &giro_dev_handle);
     if (ret != ESP_OK) {
         return ret;
     }
-
+    /*
     // Faz reset ao giroscopio (0x80).
     ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_PWR_MGM, 0x80);
     if (ret != ESP_OK) {
@@ -41,13 +41,18 @@ esp_err_t giro_init(void){
     if (ret != ESP_OK) {
         return ret;
     }
-
+    */
     // Ativa a interrupcao de dados prontos (0x01).
-    ret = i2c_register_write_byte(giro_dev_handle, ITG3200_REG_INT_CFG, 0x01);
+    ret = i2c_register_write_byte(giro_dev_handle, 0x3E, 0x01);
     if (ret != ESP_OK) {
         return ret;
     }
-
+    vTaskDelay(pdMS_TO_TICKS(100));
+    ret = i2c_register_write_byte(giro_dev_handle, 0x16, 0x18);
+    if (ret != ESP_OK) {
+        return ret;
+    }
+    vTaskDelay(pdMS_TO_TICKS(300));
     ESP_LOGI(TAG, "Giroscopio inicializado");
 
     return ESP_OK;

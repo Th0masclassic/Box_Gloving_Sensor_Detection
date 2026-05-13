@@ -9,7 +9,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#define HMC5883L_ADDR 0x1E // Endereco I2C do magnetometro.
+#define QMC5883L_ADDR 0x0D // Endereco I2C do magnetometro.
 
 typedef struct {
     float x;

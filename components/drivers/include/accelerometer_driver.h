@@ -6,6 +6,8 @@
 #include "i2c_driver_init.h"
 #include "esp_log.h"
 #include "driver/i2c_master.h"
+#include "freertos/FreeRTOS.h" 
+#include "freertos/task.h"
 
 #define ACCEL_I2C_ADDR          0x53 // Endereco I2C do ADXL345.
 #define READ_BYTES_ARRAY_SZ     100  // Tamanho maximo de leitura.
@@ -15,6 +17,11 @@
 #define ADXL345_REG_DATA_FORMAT 0x31 // Registo do formato dos dados.
 #define ADXL345_REG_BW_RATE     0x2C // Registo da taxa de amostragem.
 #define ADXL345_REG_INT_ENABLE  0x2E // Registo de interrupcoes.
+#define ADXL345_REG_INT_MAP     0x2F // Mapeamento das interrupcoes para INT1/INT2.
+#define ADXL345_REG_INT_SOURCE  0x30 // Origem/limpeza das interrupcoes.
+#define ADXL345_REG_FIFO_CTL    0x38 // Controlo da FIFO.
+
+#define ADXL345_INT_DATA_READY  (1U << 7)
 
 #define ACCEL_INT_PIN 6 // Pino de interrupcao do acelerometro.
 
@@ -24,6 +31,8 @@ typedef struct {
     float z;
 } accel_data_t;
 
+
+esp_err_t accel_setup_interrupt(TaskHandle_t task_to_notify);
 /**
  * @brief Le bytes consecutivos do acelerometro.
  *

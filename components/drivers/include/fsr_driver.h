@@ -28,6 +28,6 @@ esp_err_t fsr_init();
  * @param channel Canal ADC a ler.
  * @return Valor convertido do sensor.
  */
-int read_fsr(adc_channel_t channel);
+float read_fsr(adc_channel_t channel);
 
 #endif

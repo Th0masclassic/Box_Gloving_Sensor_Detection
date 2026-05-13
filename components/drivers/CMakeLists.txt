@@ -7,6 +7,7 @@ idf_component_register(
 	    "src/fsr_driver.c"
         "src/giroscopio_driver.c"
         "src/magnometer_driver.c"
+	"src/led_driver.c"
     INCLUDE_DIRS
         "include"
     REQUIRES

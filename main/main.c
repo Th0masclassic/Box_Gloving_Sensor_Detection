@@ -12,19 +12,18 @@
 #include "magnometer_driver.h"
 
 static const char *TAG = "MAIN";
-static const int LIMITE_GOLPE = 1;
+TaskHandle_t sensor_task_handle = NULL;
 
-void sensor_task(void *pvParameter) {
+void sensor_task(void *pvParameter){
     (void)pvParameter;
-
     accel_data_t acc_dados = {0};
     giro_data_t gyr_dados = {0};
     mag_data_t mag_dados = {0};
 
     while (1) {
-        int forca = read_fsr(FSR_PIN0);
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+        float forca = read_fsr(FSR_PIN0);
 
-        // Le os sensores I2C.
         if (accel_get_real_data(&acc_dados) != ESP_OK) {
             ESP_LOGE(TAG, "Falha ao ler o acelerometro");
         }
@@ -34,33 +33,22 @@ void sensor_task(void *pvParameter) {
         if (mag_get_real_data(&mag_dados) != ESP_OK) {
             ESP_LOGE(TAG, "Falha ao ler o magnetometro");
         }
-
-        printf("FSR:%4d | ACC [X:%6.2f Y:%6.2f Z:%6.2f] | GIRO [X:%7.2f Y:%7.2f Z:%7.2f] | MAG [X:%6.2f Y:%6.2f Z:%6.2f]\n",
+        printf("FSR:%4.2f | ACC [X:%6.2f Y:%6.2f Z:%6.2f] | GIRO [X:%7.2f Y:%7.2f Z:%7.2f] | MAG [X:%6.2f Y:%6.2f Z:%6.2f]\n",
                forca,
                acc_dados.x, acc_dados.y, acc_dados.z,
                gyr_dados.x, gyr_dados.y, gyr_dados.z,
-               mag_dados.x, mag_dados.y, mag_dados.z);
+               mag_dados.x, mag_dados.y, mag_dados.z);      
 
-        if (forca > LIMITE_GOLPE) {
-            printf("GOLPE DETETADO! FSR: %4d\n", forca);
-
-            // Evita contar o mesmo golpe duas vezes.
-            vTaskDelay(pdMS_TO_TICKS(1000));
-        }
-
-        vTaskDelay(pdMS_TO_TICKS(500));
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 
-void app_main(void)
-{
-    // Inicializa os servicos base.
+void app_main(void){
+
     ESP_ERROR_CHECK(init_nvs());
     ESP_ERROR_CHECK(init_transmit_driver());
-    
-    // Inicializa os drivers.
     ESP_ERROR_CHECK(i2c_init());
-    
+
     if (accel_init() != ESP_OK) {
         ESP_LOGE(TAG, "Erro critico: Acelerometro nao encontrado!");
     }
@@ -79,8 +67,6 @@ void app_main(void)
 
     vTaskDelay(pdMS_TO_TICKS(100));
 
-    ESP_LOGI(TAG, "Sistema de 6 eixos pronto. A iniciar leituras...");
-    
-    // Tarefa de leitura dos sensores.
-    xTaskCreate(sensor_task, "sensor_task", 4096, NULL, 5, NULL);
+    ESP_ERROR_CHECK(xTaskCreate(sensor_task, "sensor_task", 4096, NULL, 5, &sensor_task_handle) == pdPASS ? ESP_OK : ESP_FAIL);
+    ESP_ERROR_CHECK(accel_setup_interrupt(sensor_task_handle));
 }

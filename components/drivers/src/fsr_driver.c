@@ -21,8 +21,17 @@ esp_err_t fsr_init() {
     return ESP_OK;
 }
 
-int read_fsr(adc_channel_t channel) {
+float read_fsr(adc_channel_t channel) {
     int adc_value = 0;
     ESP_ERROR_CHECK(adc_oneshot_read(adc_handle, channel, &adc_value));
-    return 4095 - adc_value; // Valor invertido pelo divisor de tensao.
+
+    int adc_inverted = 4095 - adc_value; // Inverte o valor do ADC
+    // Aplica a fórmula da curva de calibração do sensor de 6kg:
+    /*float peso_kg = (0.00136f * (float)adc_inverted) - 0.587f;
+
+    // Filtro de segurança
+    if (peso_kg < 0.0f) {
+        peso_kg = 0.0f;
+    }*/
+    return adc_inverted;
 }
