@@ -56,9 +56,7 @@ esp_err_t accel_setup_interrupt(TaskHandle_t task_to_notify) {
     if (err != ESP_OK && err != ESP_ERR_INVALID_STATE) {
         return err;
     }
-    
-    ESP_LOGI(TAG, "Hardware interrupt configurada no GPIO %d", ACCEL_INT_PIN);
-    
+        
     err = gpio_isr_handler_add(ACCEL_INT_PIN, adxl_isr_handler, NULL);
     if (err != ESP_OK) {
         return err;
