@@ -127,7 +127,7 @@ esp_err_t accel_get_real_data(accel_data_t *accel_data) {
     }
     // Ler o registo INT_SOURCE (0x30) força o sensor a baixar o pino INT1[cite: 9]
     (void)accel_get_int_source();
-    // Converte os valores para g.
+    // Converte os valores raw para g.
     accel_data->x = (float)(int16_t)((raw_data[1] << 8) | raw_data[0]) * 0.0039;
     accel_data->y = (float)(int16_t)((raw_data[3] << 8) | raw_data[2]) * 0.0039;
     accel_data->z = (float)(int16_t)((raw_data[5] << 8) | raw_data[4]) * 0.0039;
