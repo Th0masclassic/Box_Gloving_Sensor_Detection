@@ -1,0 +1,10 @@
+# Pasta de compilação (Lixo pesado)
+build/
+
+# Configurações locais do microcontrolador
+sdkconfig
+sdkconfig.old
+
+# Ficheiros do VS Code (opcional, mas recomendado)
+.vscode/
+.DS_Store

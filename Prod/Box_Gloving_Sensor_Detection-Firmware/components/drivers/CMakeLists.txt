@@ -1,0 +1,21 @@
+idf_component_register(
+    SRCS
+        "src/nvs_driver.c"
+        "src/accelerometer_driver.c"
+        "src/transmit_driver.c"
+        "src/i2c_driver_init.c"
+	    "src/fsr_driver.c"
+        "src/giroscopio_driver.c"
+        "src/magnometer_driver.c"
+        "src/sensor_payload_codec.c"
+        "src/bluetooth_driver.c"
+	    "src/led_driver.c"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        bt
+        nvs_flash
+	esp_adc
+	log
+        driver
+)
