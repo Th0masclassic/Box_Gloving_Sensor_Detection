@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* SmartBoxingGloveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* SmartBoxingGloveApp.swift */; };
+		A10000000000000000000002 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* RootTabView.swift */; };
+		A10000000000000000000003 /* GloveBluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* GloveBluetoothManager.swift */; };
+		A10000000000000000000004 /* GloveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* GloveProtocol.swift */; };
+		A10000000000000000000005 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* AppModels.swift */; };
+		A10000000000000000000006 /* ExportDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* ExportDocument.swift */; };
+		A10000000000000000000007 /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* LocalStore.swift */; };
+		A10000000000000000000008 /* DemoPunchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* DemoPunchSource.swift */; };
+		A10000000000000000000009 /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* TrainingViewModel.swift */; };
+		A1000000000000000000000A /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* UIComponents.swift */; };
+		A1000000000000000000000B /* TrainingDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* TrainingDashboardView.swift */; };
+		A1000000000000000000000C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C /* HistoryView.swift */; };
+		A1000000000000000000000D /* ProgressDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D /* ProgressDashboardView.swift */; };
+		A1000000000000000000000E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* SettingsView.swift */; };
+		A1000000000000000000000F /* GloveProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* GloveProtocolTests.swift */; };
+		A10000000000000000000010 /* LocalStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* LocalStoreTests.swift */; };
+		A10000000000000000000011 /* protocol-v2-fixtures.json in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* protocol-v2-fixtures.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A30000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A40000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A50000000000000000000001;
+			remoteInfo = SmartBoxingGlove;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A20000000000000000000001 /* SmartBoxingGloveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/App/SmartBoxingGloveApp.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000002 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/App/RootTabView.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000003 /* GloveBluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Bluetooth/GloveBluetoothManager.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000004 /* GloveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Bluetooth/GloveProtocol.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000005 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Domain/AppModels.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000006 /* ExportDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Persistence/ExportDocument.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000007 /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Persistence/LocalStore.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000008 /* DemoPunchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Training/DemoPunchSource.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000009 /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Training/TrainingViewModel.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000A /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UI/UIComponents.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000B /* TrainingDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UI/TrainingDashboardView.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UI/HistoryView.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000D /* ProgressDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UI/ProgressDashboardView.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/UI/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config/Info.plist; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000010 /* GloveProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/GloveProtocolTests.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000011 /* LocalStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/LocalStoreTests.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000012 /* protocol-v2-fixtures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tests/Fixtures/protocol-v2-fixtures.json; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000013 /* SmartBoxingGlove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBoxingGlove.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000014 /* SmartBoxingGloveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartBoxingGloveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A60000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A70000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A70000000000000000000002 /* App */,
+				A70000000000000000000003 /* Bluetooth */,
+				A70000000000000000000004 /* Domain */,
+				A70000000000000000000005 /* Persistence */,
+				A70000000000000000000006 /* Training */,
+				A70000000000000000000007 /* UI */,
+				A70000000000000000000008 /* Config */,
+				A70000000000000000000009 /* Tests */,
+				A7000000000000000000000A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A70000000000000000000002 /* App */ = {isa = PBXGroup; children = (A20000000000000000000001 /* SmartBoxingGloveApp.swift */, A20000000000000000000002 /* RootTabView.swift */); name = App; sourceTree = "<group>"; };
+		A70000000000000000000003 /* Bluetooth */ = {isa = PBXGroup; children = (A20000000000000000000003 /* GloveBluetoothManager.swift */, A20000000000000000000004 /* GloveProtocol.swift */); name = Bluetooth; sourceTree = "<group>"; };
+		A70000000000000000000004 /* Domain */ = {isa = PBXGroup; children = (A20000000000000000000005 /* AppModels.swift */); name = Domain; sourceTree = "<group>"; };
+		A70000000000000000000005 /* Persistence */ = {isa = PBXGroup; children = (A20000000000000000000006 /* ExportDocument.swift */, A20000000000000000000007 /* LocalStore.swift */); name = Persistence; sourceTree = "<group>"; };
+		A70000000000000000000006 /* Training */ = {isa = PBXGroup; children = (A20000000000000000000008 /* DemoPunchSource.swift */, A20000000000000000000009 /* TrainingViewModel.swift */); name = Training; sourceTree = "<group>"; };
+		A70000000000000000000007 /* UI */ = {isa = PBXGroup; children = (A2000000000000000000000A /* UIComponents.swift */, A2000000000000000000000B /* TrainingDashboardView.swift */, A2000000000000000000000C /* HistoryView.swift */, A2000000000000000000000D /* ProgressDashboardView.swift */, A2000000000000000000000E /* SettingsView.swift */); name = UI; sourceTree = "<group>"; };
+		A70000000000000000000008 /* Config */ = {isa = PBXGroup; children = (A2000000000000000000000F /* Info.plist */); name = Config; sourceTree = "<group>"; };
+		A70000000000000000000009 /* Tests */ = {isa = PBXGroup; children = (A20000000000000000000010 /* GloveProtocolTests.swift */, A20000000000000000000011 /* LocalStoreTests.swift */, A20000000000000000000012 /* protocol-v2-fixtures.json */); name = Tests; sourceTree = "<group>"; };
+		A7000000000000000000000A /* Products */ = {isa = PBXGroup; children = (A20000000000000000000013 /* SmartBoxingGlove.app */, A20000000000000000000014 /* SmartBoxingGloveTests.xctest */); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50000000000000000000001 /* SmartBoxingGlove */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000000000000000000001 /* Build configuration list for PBXNativeTarget "SmartBoxingGlove" */;
+			buildPhases = (A60000000000000000000003 /* Sources */, A60000000000000000000001 /* Frameworks */, A60000000000000000000004 /* Resources */);
+			buildRules = ();
+			dependencies = ();
+			name = SmartBoxingGlove;
+			productName = SmartBoxingGlove;
+			productReference = A20000000000000000000013 /* SmartBoxingGlove.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A50000000000000000000002 /* SmartBoxingGloveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000000000000000000002 /* Build configuration list for PBXNativeTarget "SmartBoxingGloveTests" */;
+			buildPhases = (A60000000000000000000005 /* Sources */, A60000000000000000000002 /* Frameworks */, A60000000000000000000006 /* Resources */);
+			buildRules = ();
+			dependencies = (A90000000000000000000001 /* PBXTargetDependency */);
+			name = SmartBoxingGloveTests;
+			productName = SmartBoxingGloveTests;
+			productReference = A20000000000000000000014 /* SmartBoxingGloveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A40000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A50000000000000000000001 = { CreatedOnToolsVersion = 16.0; };
+					A50000000000000000000002 = { CreatedOnToolsVersion = 16.0; TestTargetID = A50000000000000000000001; };
+				};
+			};
+			buildConfigurationList = A80000000000000000000003 /* Build configuration list for PBXProject "SmartBoxingGlove" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = pt;
+			hasScannedForEncodings = 0;
+			knownRegions = (pt, Base);
+			mainGroup = A70000000000000000000001;
+			productRefGroup = A7000000000000000000000A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (A50000000000000000000001 /* SmartBoxingGlove */, A50000000000000000000002 /* SmartBoxingGloveTests */);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A60000000000000000000004 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		A60000000000000000000006 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (A10000000000000000000011 /* protocol-v2-fixtures.json in Resources */); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A60000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* SmartBoxingGloveApp.swift in Sources */,
+				A10000000000000000000002 /* RootTabView.swift in Sources */,
+				A10000000000000000000003 /* GloveBluetoothManager.swift in Sources */,
+				A10000000000000000000004 /* GloveProtocol.swift in Sources */,
+				A10000000000000000000005 /* AppModels.swift in Sources */,
+				A10000000000000000000006 /* ExportDocument.swift in Sources */,
+				A10000000000000000000007 /* LocalStore.swift in Sources */,
+				A10000000000000000000008 /* DemoPunchSource.swift in Sources */,
+				A10000000000000000000009 /* TrainingViewModel.swift in Sources */,
+				A1000000000000000000000A /* UIComponents.swift in Sources */,
+				A1000000000000000000000B /* TrainingDashboardView.swift in Sources */,
+				A1000000000000000000000C /* HistoryView.swift in Sources */,
+				A1000000000000000000000D /* ProgressDashboardView.swift in Sources */,
+				A1000000000000000000000E /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A60000000000000000000005 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A1000000000000000000000F /* GloveProtocolTests.swift in Sources */, A10000000000000000000010 /* LocalStoreTests.swift in Sources */); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A90000000000000000000001 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = A50000000000000000000001 /* SmartBoxingGlove */; targetProxy = A30000000000000000000001 /* PBXContainerItemProxy */; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AA00000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.smartboxingglove.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AA00000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.smartboxingglove.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AA00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.smartboxingglove.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartBoxingGlove.app/SmartBoxingGlove";
+			};
+			name = Debug;
+		};
+		AA00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.smartboxingglove.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SmartBoxingGlove.app/SmartBoxingGlove";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A80000000000000000000001 /* Build configuration list for PBXNativeTarget "SmartBoxingGlove" */ = {isa = XCConfigurationList; buildConfigurations = (AA00000000000000000000003 /* Debug */, AA00000000000000000000004 /* Release */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A80000000000000000000002 /* Build configuration list for PBXNativeTarget "SmartBoxingGloveTests" */ = {isa = XCConfigurationList; buildConfigurations = (AA00000000000000000000005 /* Debug */, AA00000000000000000000006 /* Release */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A80000000000000000000003 /* Build configuration list for PBXProject "SmartBoxingGlove" */ = {isa = XCConfigurationList; buildConfigurations = (AA00000000000000000000001 /* Debug */, AA00000000000000000000002 /* Release */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = A40000000000000000000001 /* Project object */;
+}

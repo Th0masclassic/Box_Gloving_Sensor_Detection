@@ -2,6 +2,8 @@ idf_component_register(
     SRCS
         "src/nvs_driver.c"
         "src/accelerometer_driver.c"
+        "src/glove_protocol.c"
+        "src/punch_detector.c"
         "src/transmit_driver.c"
         "src/i2c_driver_init.c"
 	    "src/fsr_driver.c"
