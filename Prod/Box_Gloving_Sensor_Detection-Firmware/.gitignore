@@ -1,5 +1,10 @@
 # Pasta de compilação (Lixo pesado)
 build/
+docs/generated/
+tests/.build/
+tests/*.exe
+__pycache__/
+*.pyc
 
 # Configurações locais do microcontrolador
 sdkconfig

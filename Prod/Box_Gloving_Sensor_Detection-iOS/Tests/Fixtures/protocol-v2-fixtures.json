@@ -1,0 +1,108 @@
+{
+  "hello": "47420205",
+  "validFrames": [
+    {
+      "name": "hello_ack",
+      "kind": "helloAck",
+      "hex": "B2013412000002052003C800"
+    },
+    {
+      "name": "event",
+      "kind": "event",
+      "hex": "B21034120100420004030201BC0A00000100",
+      "adc": 2748
+    },
+    {
+      "name": "stats_chunk_0",
+      "kind": "stats",
+      "hex": "B213341202000008010000000200000003000000",
+      "index": 0,
+      "total": 8,
+      "values": [1, 2, 3]
+    },
+    {
+      "name": "stats_chunk_1",
+      "kind": "stats",
+      "hex": "B213341203000108040000000500000006000000",
+      "index": 1,
+      "total": 8,
+      "values": [4, 5, 6]
+    },
+    {
+      "name": "stats_chunk_2",
+      "kind": "stats",
+      "hex": "B213341204000208070000000800000009000000",
+      "index": 2,
+      "total": 8,
+      "values": [7, 8, 9]
+    },
+    {
+      "name": "stats_chunk_3",
+      "kind": "stats",
+      "hex": "B2133412050003080A0000000B0000000C000000",
+      "index": 3,
+      "total": 8,
+      "values": [10, 11, 12]
+    },
+    {
+      "name": "stats_chunk_4",
+      "kind": "stats",
+      "hex": "B2133412060004080D0000000E0000000F000000",
+      "index": 4,
+      "total": 8,
+      "values": [13, 14, 15]
+    },
+    {
+      "name": "stats_chunk_5",
+      "kind": "stats",
+      "hex": "B213341207000508100000001100000012000000",
+      "index": 5,
+      "total": 8,
+      "values": [16, 17, 18]
+    },
+    {
+      "name": "stats_chunk_6",
+      "kind": "stats",
+      "hex": "B213341208000608130000001400000015000000",
+      "index": 6,
+      "total": 8,
+      "values": [19, 20, 21]
+    },
+    {
+      "name": "stats_chunk_7",
+      "kind": "stats",
+      "hex": "B2133412090007081600000017000000",
+      "index": 7,
+      "total": 8,
+      "values": [22, 23]
+    }
+  ],
+  "invalidFrames": [
+    {
+      "name": "bad_magic",
+      "stage": "frame",
+      "hex": "00013412000002052003C800"
+    },
+    {
+      "name": "event_adc_above_12_bit_range",
+      "stage": "event",
+      "hex": "B21034120100420004030201001000000100"
+    },
+    {
+      "name": "event_reserved_flag",
+      "stage": "event",
+      "hex": "B21034120100420004030201BC0A00000800"
+    },
+    {
+      "name": "short_stats",
+      "stage": "stats",
+      "hex": "B21334120200000801000000"
+    }
+  ],
+  "sequenceCases": [
+    { "previous": 65535, "incoming": 0, "outcome": "accepted", "missed": 0 },
+    { "previous": 10, "incoming": 13, "outcome": "accepted", "missed": 2 },
+    { "previous": 10, "incoming": 10, "outcome": "duplicate" },
+    { "previous": 10, "incoming": 9, "outcome": "stale" }
+  ]
+}

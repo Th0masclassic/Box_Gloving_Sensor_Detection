@@ -3,6 +3,9 @@
 
 #include "esp_err.h"
 #include "driver/i2c_master.h"
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
 
 // Trocar o que esta a -1
 #define I2C_MASTER_SCL_IO          9                           /*!< GPIO number used for I2C master clock */
@@ -11,17 +14,21 @@
 #define I2C_MASTER_FREQ_HZ          400000                  /*!< I2C master clock frequency */
 #define I2C_MASTER_TX_BUF_DISABLE   0                           /*!< I2C master doesn't need buffer */
 #define I2C_MASTER_RX_BUF_DISABLE   0                           /*!< I2C master doesn't need buffer */
-#define I2C_MASTER_TIMEOUT_MS       1000
+/* At 100 Hz FreeRTOS this must still convert to at least one scheduler tick. */
+#define I2C_MASTER_TIMEOUT_MS       10
+
+/** Shared bus handle, valid after @ref i2c_init succeeds. */
+extern i2c_master_bus_handle_t bus_handle;
 
 /**
  * @brief Use This Function to know if the i2c Has been initialized
  */
-bool has_i2c_started();
+bool has_i2c_started(void);
 
 /**
  * @brief Perform Initialization of the i2c in esp32
  */
-esp_err_t i2c_init();
+esp_err_t i2c_init(void);
 
 /**
  * @brief Read a sequence of bytes from a I2C Sensor

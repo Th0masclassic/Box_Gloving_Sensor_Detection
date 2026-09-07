@@ -11,6 +11,7 @@
 
 #define ACCEL_I2C_ADDR          0x53 // Endereco I2C do ADXL345.
 #define READ_BYTES_ARRAY_SZ     100  // Tamanho maximo de leitura.
+#define ADXL345_REG_DEVID       0x00 // Registo de identificacao.
 #define ADXL345_SAMPLE_LEN      6    // Numero de bytes por amostra.
 #define ADXL345_REG_DATAX0      0x32 // Primeiro registo dos dados.
 #define ADXL345_REG_POWER_CTL   0x2D // Registo de controlo de energia.
@@ -22,6 +23,12 @@
 #define ADXL345_REG_FIFO_CTL    0x38 // Controlo da FIFO.
 
 #define ADXL345_INT_DATA_READY  (1U << 7)
+#define ADXL345_DEVID_VALUE     0xE5
+#define ADXL345_BW_RATE_800_HZ  0x0D
+#define ACCEL_SAMPLE_RATE_HZ    800U
+#define ADXL345_FULL_RES_LSB_G  0.0039f
+#define ADXL345_REST_Z_COUNTS   (-256)
+#define ADXL345_SATURATION_COUNTS 4090
 
 #define ACCEL_INT_PIN GPIO_NUM_6 // Pino de interrupcao do acelerometro.
 
@@ -30,6 +37,13 @@ typedef struct {
     float y;
     float z;
 } accel_data_t;
+
+/** Native ADXL345 two's-complement output counts. */
+typedef struct {
+    int16_t x;
+    int16_t y;
+    int16_t z;
+} accel_raw_data_t;
 
 
 esp_err_t accel_setup_interrupt(TaskHandle_t task_to_notify);
@@ -62,5 +76,8 @@ uint8_t accel_get_int_source(void);
  * @return ESP_OK se a leitura for bem sucedida.
  */
 esp_err_t accel_get_real_data(accel_data_t *accel_data);
+
+/** Reads native ADXL345 output counts without calibration or clipping. */
+esp_err_t accel_get_raw_data(accel_raw_data_t *accel_data);
 
 #endif

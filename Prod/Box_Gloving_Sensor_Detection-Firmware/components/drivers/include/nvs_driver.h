@@ -10,12 +10,12 @@
  * @brief If Has been Init Before then it will return true
  * @return true or false based on NVS Init State
  */
-bool has_init_nvs();
+bool has_init_nvs(void);
 
 /**
  * @brief Initialize the NVS in esp32
  * @return ESP_OK if success, ESP_FAIL otherwise
  */
-esp_err_t init_nvs();
+esp_err_t init_nvs(void);
 
 #endif
